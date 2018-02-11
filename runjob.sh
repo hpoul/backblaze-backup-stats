@@ -2,5 +2,6 @@
 
 cd `dirname $0`
 source venv/bin/activate
-python backblaze_stats_reader.py
+mkdir -p var
+python backblaze_stats_reader.py >> var/job.log 2>&1
 

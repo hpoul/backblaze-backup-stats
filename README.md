@@ -5,6 +5,8 @@ and log it into a CSV file for later tracking.
 
 Currently only works on mac, because it reads data from /Library/Backblaze.bzpkg/bzdata
 
+![Graph Sceenshot](img/plot_screenshot.png)
+
 
 ## Usage
 

@@ -8,7 +8,7 @@ from datetime import datetime
 import csv
 
 x = list()
-y = list()
+remaining_bytes = list()
 totalbytes = list()
 remainingfiles = list()
 
@@ -18,24 +18,24 @@ with open('backblaze_stats.csv') as f:
         date = datetime.fromtimestamp(float(row[0]))
         x.append(date)
         # remaining bytes.
-        y.append(int(row[4]))
+        remaining_bytes.append(int(row[4]))
         totalbytes.append(int(row[2]))
         remainingfiles.append(int(row[3]))
 
 data = [
-    go.Scatter(x=x, y=y, yaxis='y'),
-    go.Scatter(x=x, y=totalbytes),
+    go.Scatter(x=x, y=remaining_bytes, yaxis='y', name='Remaining Bytes'),
+    go.Scatter(x=x, y=totalbytes, name='Total Bytes'),
     go.Scatter(x=x, y=remainingfiles, yaxis='y2', name='Remaining Files')
 ]
 plotly.offline.plot({
     "data": data,
     "layout": go.Layout(
-        title="Testing",
+        title="Backblaze Backup",
         yaxis=dict(
-            title='Y1',
+            title='Bytes',
         ),
         yaxis2=dict(
-            title='Y2',
+            title='Files',
             titlefont=dict(
                 color='rgb(148, 103, 189)'
             ),
